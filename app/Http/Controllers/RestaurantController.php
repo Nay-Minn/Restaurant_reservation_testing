@@ -10,7 +10,6 @@ use App\Models\RestaurantGroup;
 
 class RestaurantController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
@@ -18,7 +17,6 @@ class RestaurantController extends Controller
 
     public function index()
     {
-
         $restaurants = Restaurant::all();
         $restaurantGroups = RestaurantGroup::all();
         return view('restaurants.index', compact('restaurants', 'restaurantGroups'));
