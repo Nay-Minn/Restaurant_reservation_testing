@@ -127,6 +127,7 @@ class RestaurantController extends Controller
 
     public function delete($id)
     {
+        aaaaa
         $restaurant = Restaurant::find($id);
         $restaurant->delete();
         return redirect("restaurants")->with('info', 'Deleted successfully');
