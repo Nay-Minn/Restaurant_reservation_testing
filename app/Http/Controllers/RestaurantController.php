@@ -111,9 +111,7 @@ class RestaurantController extends Controller
 
     public function update(Request $request, $id)
     {
-
         $updateData = $request->all();
-
 
         if (isset($updateData['status'])) {
             $status = 1;
