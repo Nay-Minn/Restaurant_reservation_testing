@@ -31,7 +31,6 @@ class RestaurantController extends Controller
 
     public function create(Request $request)
     {
-
         $validator = validator($request->all(), [
             "english_name" => 'required',
             "myanmar_name" => 'required',
@@ -50,6 +49,7 @@ class RestaurantController extends Controller
             "reservation_cancel_minutes" => 'required',
             "cancel_refund_percentage" => 'required',
         ]);
+
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
