@@ -10,22 +10,29 @@ use App\Models\RestaurantGroup;
 
 class RestaurantController extends Controller
 {
-    public function index () {
 
-         $restaurants = Restaurant::all();
-         $restaurant_groups = RestaurantGroup::all();
-         return view('restaurants.index', compact('restaurants', 'restaurant_groups') );
-
+    public function __construct()
+    {
+        $this->middleware('auth');
     }
 
-    public function add() {
+    public function index()
+    {
 
-        $opening_days = OpeningDays::all();
-        $restaurant_groups = RestaurantGroup::all();
-        return view('restaurants.create_restaurant', ['opening_days' => $opening_days,'restaurant_groups' => $restaurant_groups]);
+        $restaurants = Restaurant::all();
+        $restaurantGroups = RestaurantGroup::all();
+        return view('restaurants.index', compact('restaurants', 'restaurantGroups'));
     }
 
-    public function create(Request $request) {
+    public function add()
+    {
+        $openingDays = OpeningDays::all();
+        $restaurantGroups = RestaurantGroup::all();
+        return view('restaurants.create_restaurant', ['opening_days' => $openingDays, 'restaurant_groups' => $restaurantGroups]);
+    }
+
+    public function create(Request $request)
+    {
 
         $validator = validator($request->all(), [
             "english_name" => 'required',
@@ -41,68 +48,77 @@ class RestaurantController extends Controller
             "cover_photo" => 'required',
             "opening_hours" => 'required',
             "closing_hours" => 'required',
-            "opening_days" => 'required',
+            "opening_day_id" => 'required',
             "reservation_cancel_minutes" => 'required',
             "cancel_refund_percentage" => 'required',
         ]);
-
         if ($validator->fails()) {
             return back()->withErrors($validator);
         }
 
         $input = $request->all();
 
-        $profile_file = $input['profile_photo'];
-        $profile_file_name = uniqid().$profile_file ->getClientOriginalName();
-        $profile_file->move(public_path('/images/profile_photos'), $profile_file_name);
-        $input['profile_photo'] = $profile_file_name;
+        $profileFile = $input['profile_photo'];
+        $profileFileName = uniqid() . $profileFile->getClientOriginalName();
+        $profileFile->move(public_path('/images/profile_photos'), $profileFileName);
+        $input['profile_photo'] = $profileFileName;
 
-        $cover_file = $input['cover_photo'];
-        $cover_file_name = uniqid().$cover_file->getClientOriginalName();
-        $cover_file->move(public_path('/images/cover_photos'), $cover_file_name);
-        $input['cover_photo'] = $cover_file_name;
+        $coverFile = $input['cover_photo'];
+        $coverFileName = uniqid() . $coverFile->getClientOriginalName();
+        $coverFile->move(public_path('/images/cover_photos'), $coverFileName);
+        $input['cover_photo'] = $coverFileName;
 
         if (isset($updateData['status'])) {
-            $status = 1 ;  
+            $status = 1;
         } else {
             $status = 0;
         }
-        
         $input['status'] = $status;
+
+        if ($input['restaurant_group_id'] == 0) {
+            $restaurantGroupId = null;
+        } else {
+            $restaurantGroupId = $input['restaurant_group_id'];
+        }
+        $input['restaurant_group_id'] = $restaurantGroupId;
 
         Restaurant::create($input);
         return redirect("restaurants")->with('success', 'Created successfully');
-
-
-       
     }
 
 
-    public function details($id) {
+    public function details($id)
+    {
         $restaurant = Restaurant::find($id);
-        $opening_days = OpeningDays::all();
-        $restaurant_groups = RestaurantGroup::all();
+        $openingDays = OpeningDays::all();
+        $restaurantGroups = RestaurantGroup::all();
 
-        return view('restaurants/details_restaurant',
-         ['restaurant' => $restaurant, 'opening_days' => $opening_days,'restaurant_groups' => $restaurant_groups ]);
+        return view(
+            'restaurants/details_restaurant',
+            ['restaurant' => $restaurant, 'opening_days' => $openingDays, 'restaurant_groups' => $restaurantGroups]
+        );
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $restaurant = Restaurant::find($id);
-        $opening_days = OpeningDays::all();
-        $restaurant_groups = RestaurantGroup::all();
+        $openingDays = OpeningDays::all();
+        $restaurantGroups = RestaurantGroup::all();
 
-        return view('restaurants/edit_restaurant', 
-        ['restaurant' => $restaurant, 'opening_days' => $opening_days,'restaurant_groups' => $restaurant_groups]);
+        return view(
+            'restaurants/edit_restaurant',
+            ['restaurant' => $restaurant, 'opening_days' => $openingDays, 'restaurant_groups' => $restaurantGroups]
+        );
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
 
         $updateData = $request->all();
-        
-        
+
+
         if (isset($updateData['status'])) {
-            $status = 1 ;  
+            $status = 1;
         } else {
             $status = 0;
         }
@@ -113,10 +129,11 @@ class RestaurantController extends Controller
         return redirect("restaurants")->with('success', 'Updated successfully');
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
 
         $restaurant = Restaurant::find($id);
         $restaurant->delete();
         return redirect("restaurants")->with('info', 'Deleted successfully');
     }
- }
+}

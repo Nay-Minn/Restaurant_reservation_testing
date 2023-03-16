@@ -8,13 +8,22 @@ use App\Models\Restaurant;
 
 class DashboardController extends Controller
 {
-    public function index() {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function index()
+    {
 
         $restaurants = Restaurant::all();
-        $restaurant_groups_count = RestaurantGroup::count();
-        $restaurants_count = Restaurant::count();
+        $restaurantGroupsCount = RestaurantGroup::count();
+        $restaurantsCount = Restaurant::count();
 
-        return view('/dashboards/index', [ 'restaurants_count' => $restaurants_count, 
-        'restaurant_groups_count' => $restaurant_groups_count, 'restaurants' => $restaurants]);
+        return view('/dashboards/index', [
+            'restaurants_count' => $restaurantsCount,
+            'restaurant_groups_count' => $restaurantGroupsCount, 'restaurants' => $restaurants
+        ]);
     }
 }

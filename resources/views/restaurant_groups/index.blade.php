@@ -136,7 +136,7 @@
                                         Inactive
                                         @endif
                                     </td>
-                                    <td>1</td>
+                                    <td>{{count($restaurantGroup->restaurants)}}</td>
                                     <td>
                                         <div>
                                             <a href="{{url("restaurant_groups/details/$restaurantGroup->id")}}"

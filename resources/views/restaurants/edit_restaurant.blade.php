@@ -60,10 +60,15 @@
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
                         name="passcode" value="{{$restaurant->passcode}}" placeholder="Passcode">
 
-                    <select name="restaurant_groups_id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3">
-                        <option value="1">YKKO</option>
-                        <option value="2">KFC</option>
+                    <select name="restaurant_group_id"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                        required>
+                        <option value="0" selected>Company Group</option>
+                        @foreach ($restaurant_groups as $group)
+                        <option value="{{$group->id}}" @if ($group->id == $restaurant->restaurant_group_id)
+                            selected
+                            @endif>{{$group->english_name}}</option>
+                        @endforeach
                     </select>
 
 
