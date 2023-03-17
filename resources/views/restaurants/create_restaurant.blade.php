@@ -57,18 +57,14 @@
                     <input type="text"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
                         name="username" placeholder="Username" required>
-                    <input type="password"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                        name="passcode" placeholder="Passcode" required>
+                    <div class="mt-2 form-group">
+                        <input type="password" class="form-control " name="passcode" placeholder="Passcode"
+                            id="inputPassword" required>
+                        <span toggle="#inputPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
 
-                    <select name="restaurant_group_id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                        required>
-                        <option value="0" selected>Company Group</option>
-                        @foreach ($restaurant_groups as $group)
-                        <option value="{{$group->id}}">{{$group->english_name}}</option>
-                        @endforeach
-                    </select>
+
+
 
 
                 </div>
@@ -79,17 +75,37 @@
                     <input type="text"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
                         name="phone" placeholder="Phone" pattern="[0-9]*" required>
-                    <input type="password"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                        name="confirm_passcode" placeholder="Confirm Passcode" required>
+                    <div class="mt-2 form-group">
+                        <input type="password" class="form-control" name="confirm_passcode"
+                            placeholder="Confirm Passcode" id="inputConfirmPassword" required>
+                        <span toggle="#inputConfirmPassword" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                    </div>
 
-                    <div class=" d-flex">
-                        <input type="time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                            name="opening_hours" placeholder="Opening Hour" required>
-                        <input type="time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                            name="closing_hours" placeholder="Closing Hour" required>
+                </div>
+                <div class="col-md-12 p3">
+                    <div id="validator-output" class="p-3"></div>
+                </div>
+                <div class="col-md-12">
+                    <div class="d-flex">
+                        <div class="col-md-6">
+                            <select name="restaurant_group_id"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                                required>
+                                <option value="0" selected>Company Group</option>
+                                @foreach ($restaurant_groups as $group)
+                                <option value="{{$group->id}}">{{$group->english_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class=" d-flex col-md-6">
+                            <input type="time"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                                name="opening_hours" placeholder="Opening Hour" required>
+                            <input type="time"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
+                                name="closing_hours" placeholder="Closing Hour" required>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-12 p-3 ">
@@ -162,11 +178,7 @@
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
                     dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-100">Create</button>
                 </div>
-
-
         </form>
-
-
     </div>
 </div>
 @endsection

@@ -3,9 +3,7 @@
 @section('content')
 
 <div class="container-fluid">
-
     @if (session('success'))
-
     <div class="flex mt-2 p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
         role="alert">
         <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -20,11 +18,9 @@
         </div>
     </div>
 </div>
-
 @endif
 
 @if (session('info'))
-
 <div class="flex mt-3 p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
     role="alert">
     <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
@@ -38,9 +34,29 @@
         <span class="font-medium">{{session("info")}}</span>
     </div>
 </div>
-</div>
-
 @endif
+
+<div class="container p-3">
+    <div class="slider">
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1678933964625-0b57a7ce3c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="photo" style="height: 200px; width:300px; object-fit:cover" />
+        </div>
+        <div class="slide">
+            <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="photo" style="height: 200px; width:300px; object-fit:cover" />
+        </div>
+        <div>
+            <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="photo" style="height: 200px; object-fit:cover">
+        </div>
+        <div>
+            <img src="https://plus.unsplash.com/premium_photo-1672264150574-4761d2dc3e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                alt="photo" style="height: 200px; width:300px; object-fit:cover">
+        </div>
+    </div>
+</div>
+</div>
 
 <div class="card mt-3">
     <div class="card-header d-inline">
@@ -88,62 +104,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                             @foreach ($restaurants as $restaurant)
                             <tr class="odd">
                                 <td class="dtr-control sorting_1" tabindex="0">{{$restaurant->id}}</td>
@@ -168,7 +128,6 @@
                                 </td>
                                 <td>
                                     <div>
-
                                         <a href="{{url("restaurant/details/$restaurant->id")}}"
                                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
                                             focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm
@@ -176,7 +135,6 @@
                                             dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             <i class="fas fa-eye text-white"></i>
                                         </a>
-
                                         <a href="{{url("restaurant/edit/$restaurant->id")}}" class="text-white
                                             bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none
                                             focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 text-center
@@ -191,13 +149,10 @@
                                             dark:focus:ring-red-800">
                                             <i class="fas fa-trash-alt text-white"></i>
                                         </a>
-
                                     </div>
-
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                         <tfoot>
                             <tr>
@@ -215,12 +170,9 @@
                     </table>
                 </div>
             </div>
-
         </div>
     </div>
-
 </div>
 </div>
-
 
 @endsection
