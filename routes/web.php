@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RestaurantController;
+use App\Http\Livewire\RestaurantGroupComponent;
 use App\Http\Controllers\RestaurantGroupsController;
 
 /*
@@ -21,6 +22,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/welcome', function () {
+    return view('welcome');
+});
 
 Auth::routes();
 
@@ -31,15 +35,15 @@ Route::controller(DashboardController::class)->group(function() {
 });
 
 
-Route::controller(RestaurantGroupsController::class)->group(function() {
-    Route::get('/restaurant_groups',  'index')->name('restaurant_groups');
-    Route::get('create_restaurant_groups',  "add")->name('create_restaurant_groups');
-    Route::post('create_restaurant_groups',  'create');
-    Route::get("restaurant_groups/details/{id}",  "details");
-    Route::get("restaurant_groups/edit/{id}",  "edit");
-    Route::post("restaurant_groups/edit/{id}",  "update");
-    Route::get("restaurant_groups/delete/{id}", 'delete');
-});
+// Route::controller(RestaurantGroupsController::class)->group(function() {
+//     Route::get('/restaurant_groups',  'index')->name('restaurant_groups');
+//     Route::get('create_restaurant_groups',  "add")->name('create_restaurant_groups');
+//     Route::post('create_restaurant_groups',  'create');
+//     Route::get("restaurant_groups/details/{id}",  "details");
+//     Route::get("restaurant_groups/edit/{id}",  "edit");
+//     Route::post("restaurant_groups/edit/{id}",  "update");
+//     Route::get("restaurant_groups/delete/{id}", 'delete');
+// });
 
 
 
@@ -54,5 +58,12 @@ Route::controller(RestaurantController::class)->group(function () {
 });
 
 
-
 Auth::routes();
+
+Route::get('restaurant_groups', function () {
+         return view('restaurant_groups.index'); 
+        })->name('restaurant_groups');
+
+// function () {
+//     return view('livewire.restaurant_group_index');
+// }
