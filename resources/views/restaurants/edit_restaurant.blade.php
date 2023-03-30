@@ -35,34 +35,25 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-2"
                         for="file_input">Upload
                         Profile Photo</label>
-                    <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        id="file_input" type="file" name="cover_photo">
+                    <input class="form-control" id="file_input" type="file" name="cover_photo">
                 </div>
                 <div class="mb-3 col-md-8 p-3">
                     <img src="{{asset('/images/cover_photos/'. $restaurant->cover_photo)}}" alt="cover photo"
                         class=" img-thumbnail d-block photo">
                     <label for="formFile"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mt-2">Cover Photo</label>
-                    <input
-                        class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                        type="file" name="cover_photo">
+                    <input class="form-control" type="file" name="cover_photo">
                 </div>
 
                 <div class="col-md-6 p-3">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        name="english_name" value="{{$restaurant->english_name}}" placeholder="Restaurant Name EN">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        name="username" value="{{$restaurant->username}}" placeholder="Username">
-                    <input type="password"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        name="passcode" value="{{$restaurant->passcode}}" placeholder="Passcode">
+                    <input type="text" class="form-control" name="english_name" value="{{$restaurant->english_name}}"
+                        placeholder="Restaurant Name EN">
+                    <input type="text" class="form-control mt-3" name="username" value="{{$restaurant->username}}"
+                        placeholder="Username">
+                    <input type="password" class="form-control mt-3" name="passcode" value="{{$restaurant->passcode}}"
+                        placeholder="Passcode">
 
-                    <select name="restaurant_group_id"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-2"
-                        required>
+                    <select name="restaurant_group_id" class="form-control mt-2" required>
                         <option value="0" selected>Company Group</option>
                         @foreach ($restaurant_groups as $group)
                         <option value="{{$group->id}}" @if ($group->id == $restaurant->restaurant_group_id)
@@ -74,24 +65,18 @@
 
                 </div>
                 <div class="col-md-6 p-3">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 "
-                        name="myanmar_name" value="{{$restaurant->myanmar_name}}" placeholder="Restaurant Name MM">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        name="phone" value="{{$restaurant->phone}}" placeholder="Phone">
-                    <input type="password"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        value="{{$restaurant->confirm_passcode}}" name="confirm_passcode"
-                        placeholder="Confirm Passcode">
+                    <input type="text" class="form-control " name="myanmar_name" value="{{$restaurant->myanmar_name}}"
+                        placeholder="Restaurant Name MM">
+                    <input type="text" class="form-control mt-3" name="phone" value="{{$restaurant->phone}}"
+                        placeholder="Phone">
+                    <input type="password" class="form-control mt-3" value="{{$restaurant->confirm_passcode}}"
+                        name="confirm_passcode" placeholder="Confirm Passcode">
 
                     <div class=" d-flex">
-                        <input type="time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                            name="opening_hours" value="{{$restaurant->opening_hours}}" placeholder="Opening Hour">
-                        <input type="time"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                            value="{{$restaurant->closing_hours}}" name="closing_hours" placeholder="Closing Hour">
+                        <input type="time" class="form-control mt-3" name="opening_hours"
+                            value="{{$restaurant->opening_hours}}" placeholder="Opening Hour">
+                        <input type="time" class="form-control mt-3" value="{{$restaurant->closing_hours}}"
+                            name="closing_hours" placeholder="Closing Hour">
                     </div>
                 </div>
                 <div class="col-md-12 p-3 ">
@@ -110,38 +95,29 @@
                 </div>
 
                 <div class="col-md-6 p-3">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{$restaurant->reservation_cancel_minutes}}" name="reservation_cancel_minutes"
-                        placeholder="Reservation Cancel Minutes" />
-                    <select name="city"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3">
+                    <input type="text" class="form-control" value="{{$restaurant->reservation_cancel_minutes}}"
+                        name="reservation_cancel_minutes" placeholder="Reservation Cancel Minutes" />
+                    <select name="city" class="form-control mt-3">
                         <option value="1">Yangon</option>
                         <option value="2">Mandalay </option>
                     </select>
 
                 </div>
                 <div class="col-md-6 p-3">
-                    <input type="text"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        value="{{$restaurant->cancel_refund_percentage}}" name="cancel_refund_percentage"
-                        placeholder="Cancel Refund Percentage" />
-                    <select name="township"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3">
+                    <input type="text" class="form-control" value="{{$restaurant->cancel_refund_percentage}}"
+                        name="cancel_refund_percentage" placeholder="Cancel Refund Percentage" />
+                    <select name="township" class="form-control mt-3">
                         <option value="1">Ahlone</option>
                         <option value="2">North Dagon</option>
                     </select>
                 </div>
                 <div class="col-md-12 p-3">
                     <textarea name="address" placeholder="Address"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3">{{$restaurant->address}}</textarea>
+                        class="form-control mt-3">{{$restaurant->address}}</textarea>
                 </div>
                 <div class=" col-md-6 p-3">
                     <div class="form-check">
-                        <input
-                            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 me-2"
-                            type="checkbox" value="" id="flexCheckDefault" type="checkbox" value=""
-                            id="flexCheckDefault">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                         <label class="form-check-label" for="flexCheckDefault">
                             Clone Menu from the same group restaurant
                         </label>
@@ -161,8 +137,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 mx-auto">
-                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600
-                         dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 w-100">Update</button>
+                    <button type="submit" class="btn btn-primary w-100">Update</button>
                 </div>
 
 

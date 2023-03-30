@@ -4,58 +4,37 @@
 
 <div class="container-fluid">
     @if (session('success'))
-    <div class="flex mt-2 p-4 mb-4 text-sm text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800"
-        role="alert">
-        <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                clip-rule="evenodd"></path>
-        </svg>
-        <span class="sr-only">Info</span>
-        <div>
-            <span class="font-medium">Success</span>
-        </div>
+    <div class="alert alert-success" role="alert">
+        {{session('success')}}
     </div>
-</div>
-@endif
+    @endif
 
-@if (session('info'))
-<div class="flex mt-3 p-4 mb-4 text-sm text-blue-800 border border-blue-300 rounded-lg bg-blue-50 dark:bg-gray-800 dark:text-blue-400 dark:border-blue-800"
-    role="alert">
-    <svg aria-hidden="true" class="flex-shrink-0 inline w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd"
-            d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-            clip-rule="evenodd"></path>
-    </svg>
-    <span class="sr-only">Info</span>
-    <div>
-        <span class="font-medium">{{session("info")}}</span>
+    @if (session('info'))
+    <div class=" alert alert-info" role="alert">
+        {{session("info")}}
     </div>
-</div>
-@endif
+    @endif
 
-<div class="container p-3">
-    <div class="slider">
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1678933964625-0b57a7ce3c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="photo" style="height: 200px; width:300px; object-fit:cover" />
-        </div>
-        <div class="slide">
-            <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt="photo" style="height: 200px; width:300px; object-fit:cover" />
-        </div>
-        <div>
-            <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="photo" style="height: 200px; object-fit:cover">
-        </div>
-        <div>
-            <img src="https://plus.unsplash.com/premium_photo-1672264150574-4761d2dc3e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
-                alt="photo" style="height: 200px; width:300px; object-fit:cover">
+    <div class="container p-3">
+        <div class="slider">
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1678933964625-0b57a7ce3c1f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="photo" style="height: 200px; width:300px; object-fit:cover" />
+            </div>
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                    alt="photo" style="height: 200px; width:300px; object-fit:cover" />
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1678933632079-d29d876dbc0e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="photo" style="height: 200px; object-fit:cover">
+            </div>
+            <div>
+                <img src="https://plus.unsplash.com/premium_photo-1672264150574-4761d2dc3e26?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"
+                    alt="photo" style="height: 200px; width:300px; object-fit:cover">
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="card mt-3">
@@ -129,24 +108,13 @@
                                 <td>
                                     <div>
                                         <a href="{{url("restaurant/details/$restaurant->id")}}"
-                                            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                                            focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm
-                                            p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600
-                                            dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                            class="btn btn-secondary" >
                                             <i class="fas fa-eye text-white"></i>
                                         </a>
-                                        <a href="{{url("restaurant/edit/$restaurant->id")}}" class="text-white
-                                            bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none
-                                            focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 text-center
-                                            inline-flex items-center mr-2 dark:bg-gray-600 dark:hover:bg-gray-700
-                                            dark:focus:ring-gray-800">
+                                        <a href="{{url("restaurant/edit/$restaurant->id")}}" class="btn btn-primary">
                                             <i class="fas fa-pen text-white"></i>
                                         </a>
-                                        <a href="{{url("restaurant/delete/$restaurant->id")}}" class="text-white
-                                            bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none
-                                            focus:ring-red-300 font-medium rounded-lg text-sm p-2.5 text-center
-                                            inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-red-700
-                                            dark:focus:ring-red-800">
+                                        <a href="{{url("restaurant/delete/$restaurant->id")}}" class="btn btn-danger">
                                             <i class="fas fa-trash-alt text-white"></i>
                                         </a>
                                     </div>

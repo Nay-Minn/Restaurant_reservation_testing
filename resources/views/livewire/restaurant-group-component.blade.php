@@ -37,9 +37,9 @@
                                     <td>{{$restaurantGroup->created_at}}</td>
                                     <td>
                                         @if ($restaurantGroup->status == '1')
-                                        Active
+                                        <div class=" badge badge-success">Active</div>
                                         @elseif ($restaurantGroup->status == '0')
-                                        Inactive
+                                        <div class=" badge badge-warning">Inactive </div>
                                         @endif
                                     </td>
                                     <td>{{count($restaurantGroup->restaurants)}}</td>

@@ -111,58 +111,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                                 @foreach ($restaurants as $restaurant)
                                 <tr class="odd">
                                     <td class="dtr-control sorting_1" tabindex="0">{{$restaurant->id}}</td>
@@ -176,25 +124,16 @@
                                     <td>
                                         <div>
                                             <a href="{{url("restaurant/details/$restaurant->id")}}"
-                                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4
-                                                focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm
-                                                p-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600
-                                                dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                class="btn btn-secondary">
                                                 <i class="fas fa-eye text-white"></i>
                                             </a>
 
-                                            <a href="{{url("restaurant/edit/$restaurant->id")}}" class="text-white
-                                                bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none
-                                                focus:ring-gray-300 font-medium rounded-lg text-sm p-2.5 text-center
-                                                inline-flex items-center mr-2 dark:bg-gray-600 dark:hover:bg-gray-700
-                                                dark:focus:ring-gray-800">
+                                            <a href="{{url("restaurant/edit/$restaurant->id")}}" class="btn
+                                                btn-primary">
                                                 <i class="fas fa-pen text-white"></i>
                                             </a>
-                                            <a href="{{url("restaurant/delete/$restaurant->id")}}" class="text-white
-                                                bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none
-                                                focus:ring-red-300 font-medium rounded-lg text-sm p-2.5 text-center
-                                                inline-flex items-center mr-2 dark:bg-red-600 dark:hover:bg-red-700
-                                                dark:focus:ring-red-800">
+                                            <a href="{{url("restaurant/delete/$restaurant->id")}}" class="btn
+                                                btn-danger">
                                                 <i class="fas fa-trash-alt text-white"></i>
                                             </a>
                                         </div>

@@ -29,7 +29,7 @@ Route::get('/welcome', function () {
 Auth::routes();
 
 
-Route::controller(DashboardController::class)->group(function() {
+Route::controller(DashboardController::class)->group(function () {
     Route::get('/home',  'index')->name('home');
     Route::get('/dashboard',  'index')->name('dashboard');
 });
@@ -48,9 +48,9 @@ Route::controller(DashboardController::class)->group(function() {
 
 
 Route::controller(RestaurantController::class)->group(function () {
-    Route::get('/restaurants','index')->name('restaurants');
-    Route::get('/create_restaurant',  'add')->name('create_restaurant');
-    Route::post('/create_restaurant',  'create');
+    Route::get('/restaurants', 'index')->name('restaurants');
+    Route::get('/create-restaurant',  'add')->name('create_restaurant');
+    Route::post('/create-restaurant',  'create');
     Route::get("restaurant/details/{id}",  'details');
     Route::get("restaurant/edit/{id}",  'edit');
     Route::post("restaurant/edit/{id}",  'update');
@@ -60,10 +60,10 @@ Route::controller(RestaurantController::class)->group(function () {
 
 Auth::routes();
 
-Route::get('restaurant_groups', function () {
-         return view('restaurant_groups.index'); 
-        })->name('restaurant_groups');
+Route::get('restaurant-groups', function () {
+    return view('restaurant_groups.index');
+})->name('restaurant_groups');
 
-// function () {
-//     return view('livewire.restaurant_group_index');
-// }
+Route::get('payment-method', function () {
+    return view('payment_method.index');
+});

@@ -71,6 +71,7 @@ class RestaurantController extends Controller
         } else {
             $status = 0;
         }
+
         $input['status'] = $status;
 
         if ($input['restaurant_group_id'] == 0) {
@@ -79,8 +80,8 @@ class RestaurantController extends Controller
             $restaurantGroupId = $input['restaurant_group_id'];
         }
         $input['restaurant_group_id'] = $restaurantGroupId;
-
         Restaurant::create($input);
+
         return redirect("restaurants")->with('success', 'Created successfully');
     }
 
@@ -112,13 +113,11 @@ class RestaurantController extends Controller
     public function update(Request $request, $id)
     {
         $updateData = $request->all();
-
         if (isset($updateData['status'])) {
             $status = 1;
         } else {
             $status = 0;
         }
-
         $updateData['status'] = $status;
 
         Restaurant::find($id)->update($updateData);

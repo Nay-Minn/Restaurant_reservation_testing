@@ -25,16 +25,12 @@
             </div>
 
             <div class="col-md-6 p-3">
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    name="english_name" value="{{$restaurant->english_name}}" placeholder="Restaurant Name EN" disabled>
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                    name="username" value="{{$restaurant->username}}" placeholder="Username" disabled>
+                <input type="text" class="form-control" name="english_name" value="{{$restaurant->english_name}}"
+                    placeholder="Restaurant Name EN" disabled>
+                <input type="text" class="form-control mt-3" name="username" value="{{$restaurant->username}}"
+                    placeholder="Username" disabled>
 
-                <select name="restaurant_group_id"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                    disabled>
+                <select name="restaurant_group_id" class="form-control mt-3" disabled>
                     <option value="0">Company Group</option>
                     @foreach ($restaurant_groups as $group)
                     <option value="{{$group->id}}" @if ($group->id ==
@@ -48,20 +44,16 @@
 
             </div>
             <div class="col-md-6 p-3">
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    name="myanmar_name" value="{{$restaurant->myanmar_name}}" placeholder="Restaurant Name MM" disabled>
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                    name="phone" value="{{$restaurant->phone}}" placeholder="Phone" disabled>
+                <input type="text" class="form-control" name="myanmar_name" value="{{$restaurant->myanmar_name}}"
+                    placeholder="Restaurant Name MM" disabled>
+                <input type="text" class="form-control mt-3" name="phone" value="{{$restaurant->phone}}"
+                    placeholder="Phone" disabled>
 
                 <div class=" d-flex">
-                    <input type="time"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        value="{{$restaurant->opening_hours}}" name="opening_hours" placeholder="Opening Hour" disabled>
-                    <input type="time"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                        value="{{$restaurant->closing_hours}}" name="closing_hours" placeholder="Closing Hour" disabled>
+                    <input type="time" class="form-control mt-3" value="{{$restaurant->opening_hours}}"
+                        name="opening_hours" placeholder="Opening Hour" disabled>
+                    <input type="time" class="form-control mt-3" value="{{$restaurant->closing_hours}}"
+                        name="closing_hours" placeholder="Closing Hour" disabled>
                 </div>
             </div>
             <div class="col-md-12 p-3 ">
@@ -81,33 +73,24 @@
             </div>
 
             <div class="col-md-6 p-3">
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{$restaurant->reservation_cancel_minutes}} " disabled name="reservation_cancel_minutes"
-                    placeholder="Reservation Cancel Minutes" />
-                <select name="city"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                    disabled>
+                <input type="text" class="form-control" value="{{$restaurant->reservation_cancel_minutes}} " disabled
+                    name="reservation_cancel_minutes" placeholder="Reservation Cancel Minutes" />
+                <select name="city" class="form-control mt-3" disabled>
                     <option value="1">Yangon</option>
                     <option value="2">Mandalay </option>
                 </select>
 
             </div>
             <div class="col-md-6 p-3">
-                <input type="text"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    value="{{$restaurant->cancel_refund_percentage}}" name="cancel_refund_percentage"
-                    placeholder="Cancel Refund Percentage" disabled />
-                <select name="township"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
-                    disabled>
+                <input type="text" class="form-control" value="{{$restaurant->cancel_refund_percentage}}"
+                    name="cancel_refund_percentage" placeholder="Cancel Refund Percentage" disabled />
+                <select name="township" class="form-control mt-3" disabled>
                     <option value="1">Ahlone</option>
                     <option value="2">North Dagon</option>
                 </select>
             </div>
             <div class="col-md-12 p-3">
-                <textarea name="address" placeholder="Address"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-3"
+                <textarea name="address" placeholder="Address" class="form-control mt-3"
                     disabled>{{$restaurant->address}}</textarea>
             </div>
             <div class=" col-md-6 p-3">
