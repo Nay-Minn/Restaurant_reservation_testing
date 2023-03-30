@@ -4,8 +4,8 @@
             <div class="card">
                 <div class="card-header">
                     <h5 style="float: left;"><strong>Payment Method</strong></h5>
-                    <button class="btn btn-sm btn-primary" style="float: right;" data-bs-toggle="modal"
-                        data-bs-target="#addPaymentMethodModal">Add New Payment Method</button>
+                    <button class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal"
+                        data-target="#addPaymentMethodModal">Add New Payment Method</button>
                 </div>
                 <div class="card-body">
                     @if (session()->has('message'))
@@ -36,9 +36,9 @@
                                 </td>
                                 <td style="text-align: center;">
                                     <button class="btn btn-sm btn-secondary"
-                                        wire:click="viewPaymentMethod({{ $paymentMethod->id }})">View</button>
+                                        wire:click="view({{ $paymentMethod->id }})">View</button>
                                     <button class="btn btn-sm btn-primary"
-                                        wire:click="editPaymentMethod({{ $paymentMethod->id }})">Edit</button>
+                                        wire:click="edit({{ $paymentMethod->id }})">Edit</button>
                                     <button class="btn btn-sm btn-danger"
                                         wire:click="deleteConfirmation({{ $paymentMethod->id }})">Delete</button>
                                 </td>
@@ -63,12 +63,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Payment Method</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="createPaymentMethod">
+                    <form wire:submit.prevent="store">
                         <div class="row">
                             <div class="col-12">
                                 <input type="text" id="name" placeholder="Payment Method" class="form-control"
@@ -103,12 +103,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Payment Method</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        wire:click='closeEditModal'>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form wire:submit.prevent="updatePaymentMethod">
+                    <form wire:submit.prevent="update">
                         <div class="row">
                             <div class="col-12">
                                 <input type="text" id="name" placeholder="Payment Method" class="form-control"
@@ -144,7 +145,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Delete Confirmation</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -152,9 +153,9 @@
                     <h6>Are you sure? You want to delete this Payment Method!</h6>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-sm btn-primary" wire:click="cancel()" data-bs-dismiss="modal"
+                    <button class="btn btn-sm btn-primary" wire:click="cancel()" data-dismiss="modal"
                         aria-label="Close">Cancel</button>
-                    <button class="btn btn-sm btn-danger" wire:click="deletePaymentMethod()">Yes! Delete</button>
+                    <button class="btn btn-sm btn-danger" wire:click="destroy()">Yes! Delete</button>
                 </div>
             </div>
         </div>
@@ -166,7 +167,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Payment Method Detail</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        wire:click='closeViewStudentModal'>
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -200,6 +202,7 @@
             $('#addPaymentMethodModal').modal('hide');
             $('#editPaymentMethodModal').modal('hide');
             $('#deletePaymentMethodModal').modal('hide');
+            $('#viewPaymentMethodModal').modal('hide')
         });
 
         window.addEventListener('show-edit-paymentMethod-modal', event =>{

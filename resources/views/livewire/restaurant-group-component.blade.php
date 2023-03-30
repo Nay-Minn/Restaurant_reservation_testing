@@ -5,8 +5,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h5 style="float: left;"><strong>Restaurant Groups</strong></h5>
-                        <button class="btn btn-sm btn-primary" style="float: right;" data-bs-toggle="modal"
-                            data-bs-target="#addRestaurantGroupModal">Add New Restaurant Group</button>
+                        <button class="btn btn-sm btn-primary" style="float: right;" data-toggle="modal"
+                            data-target="#addRestaurantGroupModal">Add New Restaurant Group</button>
                     </div>
                     <div class="card-body">
                         @if (session()->has('message'))
@@ -45,9 +45,9 @@
                                     <td>{{count($restaurantGroup->restaurants)}}</td>
                                     <td style="text-align: center;">
                                         <button class="btn btn-sm btn-secondary"
-                                            wire:click="viewGroup({{ $restaurantGroup->id }})">View</button>
+                                            wire:click="view({{ $restaurantGroup->id }})">View</button>
                                         <button class="btn btn-sm btn-primary"
-                                            wire:click="editGroup({{ $restaurantGroup->id }})">Edit</button>
+                                            wire:click="edit({{ $restaurantGroup->id }})">Edit</button>
                                         <button class="btn btn-sm btn-danger"
                                             wire:click="deleteConfirmation({{ $restaurantGroup->id }})">Delete</button>
                                     </td>
@@ -73,13 +73,13 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Restaurant Group</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form wire:submit.prevent="createGroup">
+                    <form wire:submit.prevent="store">
 
                         <div class="row">
                             <div class="col-6">
@@ -131,13 +131,14 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Edit Restaurant Group</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                        wire:click="closeEditModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
 
-                    <form wire:submit.prevent="updateGroup">
+                    <form wire:submit.prevent="update">
 
                         <div class="row">
                             <div class="col-6">
@@ -200,7 +201,7 @@
                 <div class="modal-footer">
                     <button class="btn btn-sm btn-primary" wire:click="cancel()" data-bs-dismiss="modal"
                         aria-label="Close">Cancel</button>
-                    <button class="btn btn-sm btn-danger" wire:click="deleteGroup()">Yes! Delete</button>
+                    <button class="btn btn-sm btn-danger" wire:click="destroy()">Yes! Delete</button>
                 </div>
             </div>
         </div>
@@ -212,7 +213,8 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Restaurant Group Detail</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"
+                        wire:click="closeViewRestaurantGroupModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -256,6 +258,7 @@
             $('#addRestaurantGroupModal').modal('hide');
             $('#editRestaurantGroupModal').modal('hide');
             $('#deleteRestaurantGroupModal').modal('hide');
+            $('#viewRestaurantGroupModal').modal('hide');
         });
 
         window.addEventListener('show-edit-restaurantGroup-modal', event =>{

@@ -11,7 +11,7 @@ class RestaurantGroupComponent extends Component
     public $english_name, $myanmar_name, $phone, $status, $group_edit_id, $group_delete_id;
     public $view_english_name, $view_myanmar_name, $view_phone, $view_status;
 
-    public function createGroup()
+    public function store()
     {
         $this->validate([
             'english_name' => 'required',
@@ -28,11 +28,14 @@ class RestaurantGroupComponent extends Component
         $restaurantGroup->save();
 
         session()->flash('message', 'New Group has been created');
-        $this->resetInputs();
+        $this->english_name = '';
+        $this->myanmar_name = '';
+        $this->phone = '';
+        $this->status = '';
         $this->dispatchBrowserEvent('close-modal');
     }
 
-    public function editGroup($id)
+    public function edit($id)
     {
         $restaurantGroup = RestaurantGroup::where('id', $id)->first();
         $this->group_edit_id = $restaurantGroup->id;
@@ -44,7 +47,7 @@ class RestaurantGroupComponent extends Component
         $this->dispatchBrowserEvent('show-edit-restaurantGroup-modal');
     }
 
-    public function updateGroup()
+    public function update()
     {
         //dd($this->myanmar_name, $this->english_name, $this->phone, $this->status);
         $this->validate([
@@ -59,6 +62,7 @@ class RestaurantGroupComponent extends Component
         $restaurantGroup->status = $this->status | 0;
         $restaurantGroup->save();
 
+        $this->resetInputs();
         session()->flash('message', 'Restaurant Group has been updated successfully');
         $this->dispatchBrowserEvent('close-modal');
     }
@@ -70,12 +74,18 @@ class RestaurantGroupComponent extends Component
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
 
+    public function closeEditModal()
+    {
+        $this->resetInputs();
+        $this->dispatchBrowserEvent('close-modal');
+    }
+
     public function cancel()
     {
         $this->group_delete_id = '';
     }
 
-    public function deleteGroup()
+    public function destroy()
     {
         $restaurantGroup = RestaurantGroup::where('id', $this->group_delete_id)->first();
         $restaurantGroup->delete();
@@ -85,7 +95,7 @@ class RestaurantGroupComponent extends Component
         $this->group_delete_id = '';
     }
 
-    public function viewGroup($id)
+    public function view($id)
     {
         $restaurantGroup = RestaurantGroup::where('id', $id)->first();
 
@@ -97,17 +107,19 @@ class RestaurantGroupComponent extends Component
         $this->dispatchBrowserEvent('show-view-restaurantGroup-modal');
     }
 
-    public function closeViewStudentModal()
+    public function closeViewRestaurantGroupModal()
     {
         $this->view_english_name = '';
         $this->view_myanmar_name = '';
         $this->view_phone = '';
         $this->view_status = '';
+
+        $this->dispatchBrowserEvent('close-modal');
     }
 
     public function close()
     {
-        $this->resetInput();
+        $this->resetInputs();
     }
 
     public function resetInputs()

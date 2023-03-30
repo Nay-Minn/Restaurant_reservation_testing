@@ -10,7 +10,7 @@ class PaymentMethodComponent extends Component
     public $payment_method, $status, $payment_method_edit_id, $payment_method_delete_id;
     public $view_payment_method, $view_status;
 
-    public function createPaymentMethod()
+    public function store()
     {
         $this->validate([
             'payment_method' => 'required',
@@ -25,7 +25,7 @@ class PaymentMethodComponent extends Component
         $this->dispatchBrowserEvent('close-modal');
     }
 
-    public function editPaymentMethod($id)
+    public function edit($id)
     {
         $paymentMethod = PaymentMethod::where('id', $id)->first();
         $this->payment_method_edit_id = $paymentMethod->id;
@@ -35,7 +35,7 @@ class PaymentMethodComponent extends Component
         $this->dispatchBrowserEvent('show-edit-paymentMethod-modal');
     }
 
-    public function updatePaymentMethod()
+    public function update()
     {
         $this->validate([
             'payment_method' => 'required',
@@ -46,6 +46,7 @@ class PaymentMethodComponent extends Component
         $paymentMethod->status = $this->status;
         $paymentMethod->save();
 
+        $this->resetInput();
         session()->flash('message', 'Payment Method has been updated successfully');
         $this->dispatchBrowserEvent('close-modal');
     }
@@ -57,12 +58,18 @@ class PaymentMethodComponent extends Component
         $this->dispatchBrowserEvent('show-delete-confirmation-modal');
     }
 
+    public function closeEditModal()
+    {
+        $this->resetInputs();
+        $this->dispatchBrowserEvent('close-modal');
+    }
+
     public function cancel()
     {
         $this->payment_method_delete_id = '';
     }
 
-    public function deletePaymentMethod()
+    public function destroy()
     {
         $paymentMethod = PaymentMethod::where('id', $this->payment_method_delete_id)->first();
         $paymentMethod->delete();
@@ -72,7 +79,7 @@ class PaymentMethodComponent extends Component
         $this->payment_method_delete_id = '';
     }
 
-    public function viewPaymentMethod($id)
+    public function view($id)
     {
         $paymentMethod = PaymentMethod::where('id', $id)->first();
 
@@ -86,14 +93,16 @@ class PaymentMethodComponent extends Component
     {
         $this->view_payment_method = '';
         $this->view_status = '';
+
+        $this->dispatchBrowserEvent('close-modal');
     }
 
     public function close()
     {
-        $this->resetInput();
+        $this->resetInputs();
     }
 
-    public function resetInput()
+    public function resetInputs()
     {
         $this->payment_method = "";
         $this->status = "";

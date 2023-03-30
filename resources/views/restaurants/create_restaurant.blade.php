@@ -24,7 +24,6 @@
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
                         Profile Photo</label>
                     <input class="form-control" id="file_input" type="file" name="profile_photo">
-
                 </div>
                 <div class="mb-3 col-md-8 p-3">
                     <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload
@@ -140,7 +139,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-6 mx-auto">
+                <div class="col-md-6 mx-auto mb-2">
                     <button type="submit" class="btn btn-secondary w-100">Create</button>
                 </div>
         </form>
