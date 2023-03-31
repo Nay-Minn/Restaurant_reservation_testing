@@ -21,7 +21,7 @@ class PaymentMethodComponent extends Component
         $payment_method->save();
 
         session()->flash('message', 'New payment method has been created');
-        $this->resetInput();
+        $this->resetInputs();
         $this->dispatchBrowserEvent('close-modal');
     }
 
@@ -46,7 +46,7 @@ class PaymentMethodComponent extends Component
         $paymentMethod->status = $this->status;
         $paymentMethod->save();
 
-        $this->resetInput();
+        $this->resetInputs();
         session()->flash('message', 'Payment Method has been updated successfully');
         $this->dispatchBrowserEvent('close-modal');
     }

@@ -58,7 +58,7 @@ Route::controller(RestaurantController::class)->group(function () {
 });
 
 
-Auth::routes();
+
 
 Route::get('restaurant-groups', function () {
     return view('restaurant_groups.index');
@@ -67,3 +67,16 @@ Route::get('restaurant-groups', function () {
 Route::get('payment-method', function () {
     return view('payment_method.index');
 });
+Route::get('discount-type', function () {
+    return view('discount_type.index');
+});
+Route::get('discount-group', function () {
+    return view('discount_group.index');
+});
+
+Route::get('menu-categories', function () {
+    return view('menu_categories.index');
+});
+
+
+Auth::routes();

@@ -17,7 +17,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link {{ Request::is('menu_category_list') ? 'active' : '' }}">
+    <a href="#" class="nav-link {{ Request::is('menu-categories') ? 'active' : '' }}">
         <i class="fas fa-list"></i>
         <p>Menu Category List</p>
     </a>
