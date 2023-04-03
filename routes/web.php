@@ -66,17 +66,19 @@ Route::get('restaurant-groups', function () {
 
 Route::get('payment-method', function () {
     return view('payment_method.index');
-});
+})->name('payment_method');
+
 Route::get('discount-type', function () {
     return view('discount_type.index');
-});
+})->name('discount_type');
+
 Route::get('discount-group', function () {
     return view('discount_group.index');
-});
+})->name('discount_group');
 
 Route::get('menu-categories', function () {
     return view('menu_categories.index');
-});
+})->name('menu_categories');
 
 
 Auth::routes();

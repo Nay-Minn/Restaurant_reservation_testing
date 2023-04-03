@@ -29,8 +29,8 @@
                             @foreach ($menuCategories as $menuCategory)
                             <tr>
                                 <td>
-                                    <img src="{{asset('uploads/images/menu_categories/'.$menuCategory->image)}}"
-                                        alt="Menu Category Inage" class=" img-thumbnail" width="100px">
+                                    <img src="{{asset('storage')}}/{{$menuCategory->photo}}" alt="Menu Category Image"
+                                        class=" img-thumbnail" width="100px">
                                 </td>
                                 <td>{{ $menuCategory->name}}</td>
                                 <td>---</td>
@@ -41,8 +41,8 @@
                                     <div class=" badge badge-warning">Inactive </div>
                                     @endif
                                 </td>
-                                <td>{{$menuCategory->created_at}}</td>
-                                <td>{{$menuCategory->updated_at}}</td>
+                                <td>{{$menuCategory->created_at->format('Y-m-d')}}</td>
+                                <td>{{$menuCategory->updated_at->format('Y-m-d')}}</td>
                                 <td style="text-align: center;">
                                     <button class="btn btn-sm btn-secondary"
                                         wire:click="view({{ $menuCategory->id }})">View</button>
@@ -81,10 +81,8 @@
                     <form wire:submit.prevent="store">
 
                         <div class="row">
-                            <div class="col-12">
-                                <div class="container">
-                                    <input name="file1" type="file" class="dropify" data-height="800" />
-                                </div>
+                            <div class="col-12 mb-2">
+                                <input type="file" class="form-control" wire:model="photo">
                             </div>
                             <div class="col-6">
                                 <input type="text" id="name" placeholder="Category Name" class="form-control"
@@ -125,30 +123,161 @@
             </div>
         </div>
     </div>
+
+    <div wire:ignore.self class="modal fade" id="editMenuCategoryModal" tabindex="-1" data-backdrop="static"
+        data-keyboard="false" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Menu Category</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form wire:submit.prevent="update">
+
+                        <div class="row">
+                            {{-- <div class="col-6 mb-2 mx-auto">
+                                @if ($newPhoto)
+                                <img src="{{$newPhoto->temporaryUrl() }}" class="img-thumbnail"
+                                    style="width: 150px;height:150px;" alt="">
+                                @elseif($oldPhoto)
+                                <img src="{{ asset('storage') }}/{{$oldPhoto}}" class="img-thumbnail"
+                                    style="width: 150px;height:150px;" alt="">
+                                @endif
+                                <input type="hidden" wire:model='oldPhoto' name="" id="">
+
+                            </div> --}}
+                            <div class="col-12 mb-2">
+                                <input type="file" class="form-control" wire:model="newPhoto">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" id="name" placeholder="Category Name" class="form-control"
+                                    wire:model="name">
+                                @error('name')
+                                <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="col-6">
+                                <select class="form-control" wire:model='parent_menu_category_id' required>
+                                    <option value="0" selected>Select Parent Category</option>
+                                    @foreach ($parentMenuCategories as $parentMenuCategory)
+                                    <option value="{{$parentMenuCategory->id}}">{{$parentMenuCategory->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('parent_menu_category_id')
+                                <span class="text-danger" style="font-size: 11.5px;">{{ $message }}</span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <div class="form-group">
+                                <div class="custom-control custom-switch">
+                                    <input type="checkbox" class="custom-control-input cursor-pointer"
+                                        wire:model.lazy="status" id="customSwitches">
+                                    <label class="custom-control-label" for="customSwitches">Active</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6 mx-auto mb-3">
+                                <button type="submit" class="btn btn-sm btn-primary text-dark"
+                                    style="width: 200px">Update Category</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self class="modal fade" id="viewMenuCategoryModal" tabindex="-1" data-backdrop="static"
+        data-keyboard="false" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Restaurant Group Detail</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-body">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ $viewName }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>ParentCategory</th>
+                                    <td>{{ $viewParentCategory }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Photo</th>
+                                    <td>
+                                        <img src="{{ asset('storage') }}/{{$viewPhoto}}" class="img-thumbnail"
+                                            style="width: 100px;height:100px;" alt="">
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <th>Status</th>
+                                    <td>{{$viewStatus == 1 ? "Active" : "Inactive" }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div wire:ignore.self class="modal fade" id="deleteMenuCategoryModal" tabindex="-1" data-backdrop="static"
+        data-keyboard="false" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" wire:click='cancel()'>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body pt-4 pb-4">
+                    <h6>Are you sure? You want to delete this Restaurant Group!</h6>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-sm btn-primary" wire:click="cancel()" data-dismiss="modal"
+                        aria-label="Close">Cancel</button>
+                    <button class="btn btn-sm btn-danger" wire:click="destroy()">Yes! Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @push('scripts')
 <script>
-    $(document).ready(function() {
-        $('.dropify').dropify();
-    })
-
     window.addEventListener('close-modal', event =>{
             $('#addMenuCategoryModal').modal('hide');
-            $('#editRestaurantGroupModal').modal('hide');
-            $('#deleteRestaurantGroupModal').modal('hide');
-            $('#viewRestaurantGroupModal').modal('hide');
+            $('#editMenuCategoryModal').modal('hide');
+            $('#deleteMenuCategoryModal').modal('hide');
+            $('#viewMenuCategoryModal').modal('hide');
         });
 
-        window.addEventListener('show-edit-restaurantGroup-modal', event =>{
-            $('#editRestaurantGroupModal').modal('show');
+        window.addEventListener('show-edit-menuCategory-modal', event =>{
+            $('#editMenuCategoryModal').modal('show');
         });
 
         window.addEventListener('show-delete-confirmation-modal', event =>{
-            $('#deleteRestaurantGroupModal').modal('show');
+            $('#deleteMenuCategoryModal').modal('show');
         });
 
-        window.addEventListener('show-view-restaurantGroup-modal', event =>{
-            $('#viewRestaurantGroupModal').modal('show');
+        window.addEventListener('show-view-menuCategory-modal', event =>{
+            $('#viewMenuCategoryModal').modal('show');
         });
 </script>
 @endpush

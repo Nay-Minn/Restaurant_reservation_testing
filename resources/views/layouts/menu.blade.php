@@ -17,9 +17,30 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link {{ Request::is('menu-categories') ? 'active' : '' }}">
+    <a href="{{route('menu_categories')}}" class="nav-link {{ Request::is('menu-categories') ? 'active' : '' }}">
         <i class="fas fa-list"></i>
         <p>Menu Category List</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('payment_method')}}" class="nav-link {{ Request::is('payment-method') ? 'active' : '' }}">
+        <p>Payment Method</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('discount_type')}}" class="nav-link {{ Request::is('discount_type') ? 'active' : '' }}">
+        <p>Discount Type</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('discount_group')}}" class="nav-link {{ Request::is('discount_group') ? 'active' : '' }}">
+        <p>Discount Group</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="#" class="nav-link {{ Request::is('menu') ? 'active' : '' }}">
+        <i class="fas fa-list"></i>
+        <p>Menu</p>
     </a>
 </li>
 
