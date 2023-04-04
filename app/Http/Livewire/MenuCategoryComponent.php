@@ -148,6 +148,12 @@ class MenuCategoryComponent extends Component
         $this->status = '';
     }
 
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
+
     public function render()
     {
         $menuCategories = MenuCategory::all();

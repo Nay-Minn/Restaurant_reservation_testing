@@ -38,7 +38,7 @@
     </a>
 </li>
 <li class="nav-item">
-    <a href="#" class="nav-link {{ Request::is('menu') ? 'active' : '' }}">
+    <a href="{{route('menu')}}" class="nav-link {{ Request::is('menu') ? 'active' : '' }}">
         <i class="fas fa-list"></i>
         <p>Menu</p>
     </a>

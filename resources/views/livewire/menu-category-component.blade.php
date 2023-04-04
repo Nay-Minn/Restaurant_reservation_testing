@@ -33,7 +33,7 @@
                                         class=" img-thumbnail" width="100px">
                                 </td>
                                 <td>{{ $menuCategory->name}}</td>
-                                <td>---</td>
+                                <td>{{$menuCategory->parent_menu_category_id}}</td>
                                 <td>
                                     @if ($menuCategory->status == '1')
                                     <div class=" badge badge-success">Active</div>
@@ -92,7 +92,7 @@
                                 @enderror
                             </div>
                             <div class="col-6">
-                                <select class="form-control" wire:model='parent_menu_category_id' required>
+                                <select class="form-control" wire:model='parentMenuCategoryId' required>
                                     <option value="0" selected>Select Parent Category</option>
                                     @foreach ($parentMenuCategories as $parentMenuCategory)
                                     <option value="{{$parentMenuCategory->id}}">{{$parentMenuCategory->name}}</option>
@@ -161,7 +161,7 @@
                                 @enderror
                             </div>
                             <div class="col-6">
-                                <select class="form-control" wire:model='parent_menu_category_id' required>
+                                <select class="form-control" wire:model='parentMenuCategoryId' required>
                                     <option value="0" selected>Select Parent Category</option>
                                     @foreach ($parentMenuCategories as $parentMenuCategory)
                                     <option value="{{$parentMenuCategory->id}}">{{$parentMenuCategory->name}}</option>

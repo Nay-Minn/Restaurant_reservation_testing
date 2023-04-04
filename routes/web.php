@@ -80,5 +80,12 @@ Route::get('menu-categories', function () {
     return view('menu_categories.index');
 })->name('menu_categories');
 
+Route::get('menu', function () {
+    return view('menus.index');
+})->name('menu');
+
+Route::get('create-menu', function () {
+    return view('menus.create');
+})->name('create_menu');
 
 Auth::routes();

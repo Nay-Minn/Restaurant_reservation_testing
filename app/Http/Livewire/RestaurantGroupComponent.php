@@ -120,6 +120,7 @@ class RestaurantGroupComponent extends Component
     public function close()
     {
         $this->resetInputs();
+        $this->dispatchBrowserEvent('close-modal');
     }
 
     public function resetInputs()
@@ -130,7 +131,11 @@ class RestaurantGroupComponent extends Component
         $this->status = '';
     }
 
-
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
 
     public function render()
     {

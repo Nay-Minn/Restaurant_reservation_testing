@@ -13,8 +13,13 @@
 
     @stack('third_party_stylesheets')
     @stack('page_css')
+    @stack('styles')
 
     <link rel="stylesheet" href="{{asset('css/password_validation.css')}}">
+    {{--
+    <link rel="stylesheet" href="{{asset('css/dropify.min.css')}}"> --}}
+    <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
+
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
@@ -22,6 +27,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     @livewireStyles
 </head>
 
@@ -98,14 +104,17 @@
     @stack('scripts')
 
     <script src="{{asset('js/password_validation.js')}}"></script>
+    {{-- <script src="{{asset('js/dropify.min.js')}}"></script> --}}
+    <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
                 $('.select2-ajax').select2({
                     placeholder: 'Select',
                     allowClear: true
@@ -123,9 +132,9 @@
                     dotsClass:'slick-dots'
 
                 });
-                $('.dropify').dropify();
             });
         
+            $('.dropify').dropify();
     </script>
 
 </body>

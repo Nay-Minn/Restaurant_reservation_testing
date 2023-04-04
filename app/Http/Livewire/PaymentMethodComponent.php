@@ -108,6 +108,12 @@ class PaymentMethodComponent extends Component
         $this->status = "";
     }
 
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
+
     public function render()
     {
         $paymentMethods = PaymentMethod::all();

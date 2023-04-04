@@ -109,6 +109,12 @@ class DiscountTypeComponent extends Component
         $this->status = "";
     }
 
+    public function hydrate()
+    {
+        $this->resetErrorBag();
+        $this->resetValidation();
+    }
+
     public function render()
     {
         $discountTypes = DiscountType::all();
