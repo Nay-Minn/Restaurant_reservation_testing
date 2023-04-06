@@ -90,7 +90,7 @@
                                 <td>{{$restaurant->myanmar_name}}</td>
                                 <td>{{$restaurant->phone}}</td>
                                 <td>{{$restaurant->address}}</td>
-                                <td>{{$restaurant->created_at}}</td>
+                                <td>{{$restaurant->created_at->format('Y-F-d')}}</td>
                                 <td>
                                     @if ($restaurant->status == '1')
                                     Active

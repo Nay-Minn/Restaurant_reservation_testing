@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
 
@@ -31,7 +31,7 @@
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="{{url('/restaurant_groups')}}" class="small-box-footer">More info <i
+                <a href="{{route('restaurant_groups')}}" class="small-box-footer">More info <i
                         class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
@@ -118,7 +118,7 @@
                                     <td>{{$restaurant->myanmar_name}}</td>
                                     <td>{{$restaurant->phone}}</td>
                                     <td>{{$restaurant->address}}</td>
-                                    <td>{{$restaurant->created_at}}</td>
+                                    <td>{{$restaurant->created_at->format('Y-F-d')}}</td>
                                     <td>{{$restaurant->status}}</td>
                                     <td></td>
                                     <td>

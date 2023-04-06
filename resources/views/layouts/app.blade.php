@@ -16,6 +16,8 @@
     @stack('styles')
 
     <link rel="stylesheet" href="{{asset('css/password_validation.css')}}">
+    <link rel="stylesheet" href="{{asset('css/multiple_image_upload.css')}}">
+    <link rel="stylesheet" href="{{asset('css/filepond.css')}}">
     {{--
     <link rel="stylesheet" href="{{asset('css/dropify.min.css')}}"> --}}
     <link rel="stylesheet" type="text/css" href="https://jeremyfagis.github.io/dropify/dist/css/dropify.min.css">
@@ -28,6 +30,8 @@
         integrity="sha512-17EgCFERpgZKcm0j0fEq1YCJuyAWdz9KUtv1EjVuaOz8pDnh/0nZxmU6BBXwaaxqoi9PQXnRWqlcDB027hgv9A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
+    {{-- filepond --}}
+    <link href="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.css" rel="stylesheet" />
     @livewireStyles
 </head>
 
@@ -104,6 +108,8 @@
     @stack('scripts')
 
     <script src="{{asset('js/password_validation.js')}}"></script>
+    <script src="{{asset('js/multiple_image_upload.js')}}"></script>
+    <script src="{{asset('js/filepond.js')}}"></script>
     {{-- <script src="{{asset('js/dropify.min.js')}}"></script> --}}
     <script type="text/javascript" src="https://jeremyfagis.github.io/dropify/dist/js/dropify.min.js"></script>
 
@@ -111,7 +117,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
         integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
+
+    {{-- filepond --}}
+    <script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
+    <!-- file upload itself is disabled in this pen -->
+    <!-- partial -->
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js">
+    </script>
+    <script
+        src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js">
+    </script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-poster/dist/filepond-plugin-file-poster.js"></script>
+
     <script type="text/javascript">
         $(document).ready(function () {
 

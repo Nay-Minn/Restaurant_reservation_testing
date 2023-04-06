@@ -43,6 +43,11 @@
         <p>Menu</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{route('table')}}" class="nav-link {{ Request::is('table') ? 'active' : '' }}">
+        <p>Table</p>
+    </a>
+</li>
 
 <li class="nav-item">
     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

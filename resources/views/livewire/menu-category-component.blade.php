@@ -41,8 +41,8 @@
                                     <div class=" badge badge-warning">Inactive </div>
                                     @endif
                                 </td>
-                                <td>{{$menuCategory->created_at->format('Y-m-d')}}</td>
-                                <td>{{$menuCategory->updated_at->format('Y-m-d')}}</td>
+                                <td>{{$menuCategory->created_at->format('Y-F-d')}}</td>
+                                <td>{{$menuCategory->updated_at->format('Y-F-d')}}</td>
                                 <td style="text-align: center;">
                                     <button class="btn btn-sm btn-secondary"
                                         wire:click="view({{ $menuCategory->id }})">View</button>

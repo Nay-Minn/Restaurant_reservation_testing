@@ -2,38 +2,55 @@
 
 @section('content')
 <h1>Create</h1>
-<form enctype="multipart/form-data">
+<form enctype="multipart/form-data" method="POST">
     @csrf
     <div class="container-fluid p-3">
+        {{-- <div class="row">
+            <div class="col-12">
+                <div class="upload__box">
+                    <div class="upload__img-wrap"></div>
+                    <div class="upload__btn-box">
+                        <label class="upload__btn">
+                            <p>Upload images</p>
+                            <input type="file" multiple name="photo[]" data-max_length="8" class="upload__inputfile">
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div class="row">
+            <input type="file" class="filepond" name="filepond" multiple data-max-file-size="300MB"
+                data-max-files="5" />
+        </div>
         <div class="row">
             <div class="col-6">
-                <input type="text" placeholder="Item Name EN" class="form-control">
+                <input type="text" name="english_name" placeholder="Item Name EN" class="form-control">
             </div>
             <div class="col-6">
-                <input type="text" placeholder="Item Name MM" class="form-control">
+                <input type="text" name="myanmar_name" placeholder="Item Name MM" class="form-control">
             </div>
             <div class="col-12 mt-2">
-                <textarea placeholder="Short Description" class="form-control"></textarea>
+                <textarea placeholder="Short Description" name="description" class="form-control"></textarea>
             </div>
             <div class="col-6 mt-2">
-                <select class="form-control">
+                <select class="form-control" name="menu_category_id">
                     <option value="">Category</option>
                     <option value="">1</option>
                     <option value="">2</option>
                 </select>
             </div>
             <div class="col-6 mt-2">
-                <select class="form-control" id="add-additional-item">
+                <select class="form-control" name="is_variant" id="add-additional-item">
                     <option value="simple">Simple</option>
                     <option value="varient1">Varient</option>
                     <option value="">2</option>
                 </select>
             </div>
             <div class="col-6 mt-2">
-                <input type="number" placeholder="Sale Price" class="form-control">
+                <input type="number" name="basic_price" placeholder="Basic Price" class="form-control">
             </div>
             <div class="col-6 mt-2">
-                <input type="number" placeholder="Cook Time" class="form-control">
+                <input type="number" name="cook_time" placeholder="Cook Time" class="form-control">
             </div>
             <div class="col-12 mt-2" id="dynamicDiv">
                 <div class=' mt-3 card p-3 ' id="add-item-form">
@@ -97,13 +114,13 @@
             <div class="col-md-6 mx-auto mt-3">
                 <div class="form-group">
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input cursor-pointer" wire:model.lazy="status"
+                        <input type="checkbox" class="custom-control-input cursor-pointer" name="status"
                             id="customSwitches">
                         <label class="custom-control-label" for="customSwitches">Active</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-sm btn-primary text-dark" style="width: 300px">Add
-                    Student</button>
+                <button type="submit" class="btn btn-sm btn-primary text-dark" style="width: 300px">Create
+                    Menu</button>
             </div>
         </div>
     </div>
@@ -155,6 +172,52 @@
             $(document).on('click', '.delete-next-item', function() {
                 $(this).closest('.next-item-bar').remove();
             });
+</script>
+
+{{-- <script>
+    $(function() {
+        myDropzone.destroy();
+        Dropzone.autoDiscover = false;
+
+    var myDropzone = new Dropzone("#myDropzone", {
+        url: "{{ route('menu_store') }}",
+        paramName: "file",
+        addRemoveLinks: true,
+        dictRemoveFile: "Remove",
+        maxFilesize: 2,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+        init: function() {
+            this.on("success", function(file, response) {
+                console.log(response);
+            }),
+            this.on("error", function(file, response) {
+                console.log(response);
+            });
+        }
+    });
+});
+</script> --}}
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    FilePond.registerPlugin(
+        // encodes the file as base64 data
+        FilePondPluginFileEncode,
+
+        // validates the size of the file
+        FilePondPluginFileValidateSize,
+
+        // corrects mobile image orientation
+        FilePondPluginImageExifOrientation,
+
+        FilePondPluginFilePoster,
+
+        // previews dropped images
+        FilePondPluginImagePreview
+    );
+
+    // Select the file input and use create() to turn it into a pond
+    FilePond.create(document.querySelector("input"));
+});
 </script>
 @endpush
 @endsection

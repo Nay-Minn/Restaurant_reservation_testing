@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Livewire\RestaurantGroupComponent;
 use App\Http\Controllers\RestaurantGroupsController;
@@ -57,6 +58,16 @@ Route::controller(RestaurantController::class)->group(function () {
     Route::get("restaurant/delete/{id}",  'delete');
 });
 
+Route::controller(MenuController::class)->group(function () {
+    Route::get('/menu', 'index')->name('menu');
+    Route::get('/create-menu',  'create')->name('create_menu');
+    Route::post('/create-menu',  'store')->name('menu_store');
+    Route::get("menu/details/{id}",  'show');
+    Route::get("menu/edit/{id}",  'edit');
+    Route::post("menu/edit/{id}",  'update');
+    Route::get("restaurant/delete/{id}",  'destroy');
+});
+
 
 
 
@@ -79,13 +90,10 @@ Route::get('discount-group', function () {
 Route::get('menu-categories', function () {
     return view('menu_categories.index');
 })->name('menu_categories');
+Route::get('table', function () {
+    return view('table.index');
+})->name('table');
 
-Route::get('menu', function () {
-    return view('menus.index');
-})->name('menu');
-
-Route::get('create-menu', function () {
-    return view('menus.create');
-})->name('create_menu');
+Route::get('file-export', [RestaurantGroupComponent::class, 'export'])->name('file_export');
 
 Auth::routes();

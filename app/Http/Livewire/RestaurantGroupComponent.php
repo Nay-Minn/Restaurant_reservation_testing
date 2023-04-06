@@ -3,14 +3,34 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use Livewire\WithPagination;
 use App\Models\RestaurantGroup;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\RestaurantGroupExport;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Queue\Console\RestartCommand;
+use Symfony\Component\HttpFoundation\Response;
 
 class RestaurantGroupComponent extends Component
 {
-
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
     public $english_name, $myanmar_name, $phone, $status, $group_edit_id, $group_delete_id;
     public $view_english_name, $view_myanmar_name, $view_phone, $view_status;
+    public $search = '';
 
+
+    public function export()
+    {
+        // $restaurantGroups = RestaurantGroup::all();
+        //abort_if(!in_array($ext, ['csv', 'xlsx', 'pdf']), Response::HTTP_NOT_FOUND);
+        return Excel::download(new RestaurantGroupExport, 'restaurant group.xlsx');
+    }
+
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
     public function store()
     {
         $this->validate([
@@ -139,7 +159,9 @@ class RestaurantGroupComponent extends Component
 
     public function render()
     {
-        $restaurantGroups = RestaurantGroup::all();
+        $restaurantGroups = RestaurantGroup::where('english_name', 'like', '%' . $this->search . '%')
+            ->orWhere('phone', 'like', '%' . $this->search . '%')
+            ->paginate(5);
         return view('livewire.restaurant-group-component', compact('restaurantGroups'));
     }
 }

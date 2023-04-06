@@ -1,6 +1,19 @@
 <div>
     <div class="container mt-5">
         <div class="row">
+            <div class="col-12 mb-3">
+                <form class="form-inline my-2 my-lg-0 d-inline">
+                    <input class="form-control mr-sm-2" type="search" wire:model='search'
+                        placeholder="Search by EN Name, Phone" aria-label="Search">
+                </form>
+                <a href="{{route('file_export')}}" class="btn btn-sm btn-success">Download</a>
+                <button class="btn btn-sm btn-info" wire:click="export('xlsx')" wire:loading.attr='disabled'>
+                    Download XLSX
+                </button>
+                <button class="btn btn-sm btn-danger" wire:click="export('pdf')" wire:loading.attr='disabled'>
+                    Download PDF
+                </button>
+            </div>
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
@@ -34,7 +47,7 @@
                                     <td>{{ $restaurantGroup->english_name}}</td>
                                     <td>{{ $restaurantGroup->myanmar_name }}</td>
                                     <td>{{ $restaurantGroup->phone }}</td>
-                                    <td>{{$restaurantGroup->created_at}}</td>
+                                    <td>{{$restaurantGroup->created_at->format('Y-F-d')}}</td>
                                     <td>
                                         @if ($restaurantGroup->status == '1')
                                         <div class=" badge badge-success">Active</div>
@@ -53,6 +66,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
+                                {{ $restaurantGroups->links() }}
                                 @else
                                 <tr>
                                     <td colspan="4" style="text-align: center;"><small>No Student Found</small></td>
