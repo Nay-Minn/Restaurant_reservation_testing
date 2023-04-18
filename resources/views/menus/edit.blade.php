@@ -87,11 +87,32 @@
     }
 </style>
 @endpush
-<h1>Create</h1>
+<h1>Edit</h1>
 <form enctype="multipart/form-data" method="POST">
     @csrf
     <div class="container-fluid p-3">
+        @foreach ($menu->photos as $photo)
+        <img src="{{asset('/storage/'. $photo)}}" alt="photo" style="width:200px;height:200px" class="img-thumbnail">
+        @endforeach
         <div class="row">
+            @foreach ($menu->photos as $photo)
+            @if ($photo)
+            <div style="display: flex;">
+                <div>
+                    <dl id="delete_file1" class="menu-wrapper">
+                        <div class="element">
+                            <img id="output1" class="previewMenuImg" src="{{asset('/storage/'. $photo)}}" />
+                            <a href="javascript:void" class="delete-file" onclick="deletefileLink(1)" id="delete_file1"
+                                hidden><i class="fa fa-remove" aria-hidden="true"></i></a>
+                        </div>
+                    </dl>
+                </div>
+                <div id="moreFileUpload" style="display: flex;
+                flex-wrap: wrap;
+                margin: 0 5px;"></div>
+            </div>
+            @endif
+            @endforeach
             <div style="display: flex;">
                 <div>
                     <dl id="delete_file1" class="menu-wrapper">
@@ -110,18 +131,21 @@
                 <div id="moreFileUpload" style="display: flex;
                 flex-wrap: wrap;
                 margin: 0 5px;"></div>
-
             </div>
         </div>
+
         <div class="row">
             <div class="col-6">
-                <input type="text" name="english_name" placeholder="Item Name EN" class="form-control">
+                <input type="text" name="english_name" value="{{ $menu->english_name}}" placeholder="Item Name EN"
+                    class="form-control">
             </div>
             <div class="col-6">
-                <input type="text" name="myanmar_name" placeholder="Item Name MM" class="form-control">
+                <input type="text" name="myanmar_name" value="{{$menu->myanmar_name}}" placeholder="Item Name MM"
+                    class="form-control">
             </div>
             <div class="col-12 mt-2">
-                <textarea placeholder="Short Description" name="description" class="form-control"></textarea>
+                <textarea placeholder="Short Description" name="description"
+                    class="form-control">{{ $menu->description}}</textarea>
             </div>
             <div class="col-6 mt-2">
                 <select class="form-control" name="menu_category_id">
@@ -132,15 +156,17 @@
             </div>
             <div class="col-6 mt-2">
                 <select class="form-control" name="is_variant" id="add-additional-item">
-                    <option value="simple">Simple</option>
+                    <option value="1">Simple</option>
                     <option value="varient1">Varient</option>
                 </select>
             </div>
             <div class="col-6 mt-2">
-                <input type="number" name="basic_price" placeholder="Basic Price" class="form-control">
+                <input type="number" name="basic_price" value="{{ $menu->basic_price }}" placeholder="Basic Price"
+                    class="form-control">
             </div>
             <div class="col-6 mt-2">
-                <input type="number" name="cook_time" placeholder="Cook Time" class="form-control">
+                <input type="number" name="cook_time" value="{{ $menu->cook_time }}" placeholder="Cook Time"
+                    class="form-control">
             </div>
             <div class="col-12 mt-2" id="dynamicDiv">
                 <div class=' mt-3 card p-3 ' id="add-item-form">
@@ -205,11 +231,11 @@
                 <div class="form-group">
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input cursor-pointer" name="status"
-                            id="customSwitches">
+                            id="customSwitches" {{$menu->status === 1 ? "checked" : ""}}>
                         <label class="custom-control-label" for="customSwitches">Active</label>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-sm btn-primary text-dark" style="width: 300px">Create
+                <button type="submit" class="btn btn-sm btn-primary text-dark" style="width: 300px">Update
                     Menu</button>
             </div>
         </div>
@@ -269,7 +295,6 @@
     $("input[id^='upload_file']").each(function () {
         var id = parseInt(this.id.replace("upload_file", ""));
         $("#upload_file" + id).change(function () {
-
             if ($("#upload_file" + id).val() !== "") {
                 $("#moreFileUploadLink").show();
             }

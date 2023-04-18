@@ -93,6 +93,15 @@ Route::get('menu-categories', function () {
 Route::get('table', function () {
     return view('table.index');
 })->name('table');
+Route::get('discount', function () {
+    return view('discount.index');
+})->name('discount');
+Route::get('order', function () {
+    return view('orders.index');
+})->name('order');
+Route::get('order-detail', function () {
+    return view('orders.show');
+})->name('order_detail');
 
 Route::get('file-export', [RestaurantGroupComponent::class, 'export'])->name('file_export');
 

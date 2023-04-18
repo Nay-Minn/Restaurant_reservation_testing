@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -13,7 +14,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        return view('menus.index');
+        $menus = Menu::all();
+        return view('menus.index', compact('menus'));
     }
 
     /**
@@ -34,9 +36,25 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-
         $input = $request->all();
-        dd($input);
+        $photos = [];
+
+        foreach ($input['photos'] as $photo) {
+            $fileName = uniqid() . $photo->getClientOriginalName() . '.' . $photo->getClientOriginalExtension();
+            $photo_path = $photo->storeAs('photos/menu_photos', $fileName, 'public');
+            array_push($photos, $photo_path);
+        }
+        $input['photos'] = $photos;
+
+        if (isset($input['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $input['status'] = $status;
+
+        Menu::create($input);
+        return redirect("menu")->with('success', 'Created successfully');
     }
 
     /**
@@ -58,7 +76,8 @@ class MenuController extends Controller
      */
     public function edit($id)
     {
-        //
+        $menu = Menu::find($id);
+        return view('menus.edit', compact('menu'));
     }
 
     /**

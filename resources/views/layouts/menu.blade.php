@@ -48,6 +48,16 @@
         <p>Table</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{route('discount')}}" class="nav-link {{ Request::is('discount') ? 'active' : '' }}">
+        <p>Discount</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('order')}}" class="nav-link {{ Request::is('order') ? 'active' : '' }}">
+        <p>Order</p>
+    </a>
+</li>
 
 <li class="nav-item">
     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

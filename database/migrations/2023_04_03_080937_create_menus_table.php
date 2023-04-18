@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('myanmar_name');
             $table->text('description');
             $table->float('basic_price');
-            $table->json('photo')->nullable();
+            $table->json('photos')->nullable();
             $table->string('cook_time')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('is_variant')->default(0);
