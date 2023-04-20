@@ -58,6 +58,17 @@
         <p>Order</p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{route('restaurant_dashboard')}}"
+        class="nav-link {{ Request::is('restaurant_dashboard') ? 'active' : '' }}">
+        <p>Restaurant Dashboard</p>
+    </a>
+</li>
+<li class="nav-item">
+    <a href="{{route('reservation')}}" class="nav-link {{ Request::is('reservation') ? 'active' : '' }}">
+        <p>Reservation</p>
+    </a>
+</li>
 
 <li class="nav-item">
     <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

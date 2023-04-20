@@ -6,20 +6,108 @@
         <h4 class="d-inline float-start">Menu Item</h4>
         <a href="{{route('create_menu')}}" class="btn btn-primary float-right">Add New Item</a>
     </div>
-    <div class="p-3 ">
-        <form class="form-inline my-2 my-lg-0 d-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <div class="form-group float-right">
-            <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input cursor-pointer" wire:model.lazy="status"
-                    id="customSwitches">
-                <label class="custom-control-label" for="customSwitches">Active Only</label>
+    <div class="responsive p-2" style="max-width:95%; margin:0 auto;">
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title mx-auto" style="align-item: center">Pizza</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title">Salad</h5>
+            </div>
+        </div>
+        <div class="card mx-2" style="width: 50px">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1600147184950-b0a367a98bc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title mx-auto">Chicken</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title mx-auto" style="align-item: center">Pizza</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title">Salad</h5>
+            </div>
+        </div>
+        <div class="card mx-2" style="width: 50px">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1600147184950-b0a367a98bc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title mx-auto">Chicken</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title mx-auto" style="align-item: center">Pizza</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title">Salad</h5>
+            </div>
+        </div>
+        <div class="card mx-2" style="width: 50px">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1600147184950-b0a367a98bc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title mx-auto">Chicken</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title mx-auto" style="align-item: center">Pizza</h5>
+            </div>
+        </div>
+        <div class="card mx-2">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title">Salad</h5>
+            </div>
+        </div>
+        <div class="card mx-2" style="width: 50px">
+            <img class="card-img-top"
+                src="https://images.unsplash.com/photo-1600147184950-b0a367a98bc3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=436&q=80"
+                alt="Card image cap" style="height:59px; object-fit:cover">
+            <div class="card-body">
+                <h5 class="card-title mx-auto">Chicken</h5>
             </div>
         </div>
     </div>
-    <div class="row mt-2 p-3">
+    <div class="p-3 ">
+        @livewire('menu-component')
+    </div>
+    {{-- <div class="row mt-2 p-3">
         @foreach ($menus as $menu)
         <div class="col-md-3">
             <div class="card d-flex flex-column">
@@ -62,6 +150,52 @@
             </div>
         </div>
         @endforeach
-    </div>
+    </div> --}}
 </div>
+@push('scripts')
+<script>
+    $(document).ready(function () {
+        $('.responsive').slick({
+            autoplay: false,
+            autoplayspeed: 2000,
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 9,
+            slidesToScroll: 4,
+            dotsClass:'slick-dots',
+            arrows:true,
+            responsive: [
+        {
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                infinite: true,
+                dots: true
+            }
+        },
+        {
+        breakpoint: 600,
+        settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+        },
+        {
+        breakpoint: 480,
+        settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+        }
+    // You can unslick at a given breakpoint now by adding:
+    // settings: "unslick"
+    // instead of a settings object
+    ]
+    });
+    })
+    
+</script>
+@endpush
 @endsection

@@ -3,6 +3,18 @@
 @section('content')
 @push('styles')
 <style>
+    .close-button {
+        position: absolute;
+        top: 0;
+        right: 7px;
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
+
+    .second-form {
+        position: relative;
+    }
+
     .previewMenuImg {
         width: 20%;
         height: 20%;
@@ -223,8 +235,11 @@
             $("#varient").click(function() {
                 ++i;
                 $("#dynamicDiv").append(
-                    "<div class='card p-3 2nd-form'><div class=' mt-3 '><div class='row'><div class='col-md-3'><input class='form-control' placeholder='Group Title'></div><div class='col-md-3'><div class='form-check'><input class='form-check-input' type='checkbox' id='defaultCheck1'><label class='form-check-label' for='defaultCheck1'>Require</label></div></div><div class='col-md-3'><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio1' value='option1'><label class='form-check-label' for='inlineRadio1'>Multi Choice</label></div></div><div class='col-md-3'><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio2' value='option2'><label class='form-check-label' for='inlineRadio2'>Single Choice</label></div></div></div><div class='row mt-2 plus-item'><div class='col-md-3'><input class='form-control' ></div><div class='col-md-3'><input type='number' class='form-control' ></div><div class='col-md-3'><input class='form-control' placeholder='Additional Cooking Time'></div><div class='col-md-3'><div class='btn btn-danger delete-additional-item'>Remove</div></div></div><div class='additional-item2'></div><div class='row mt-2'><div class='col-md-3'><input class='form-control' ></div><div class='col-md-3'><input type='number' class='form-control' ></div><div class='col-md-3'><input class='form-control' placeholder='Additional Cooking Time'></div><div class='col-md-3  add-more-item2'><div class='btn btn-success'>Add</div></div></div></div></div>"
+                    "<div class='card p-3 second-form'><a role='button' class='close-button'>&times;</a><div class=' mt-3 '><div class='row'><div class='col-md-3'><input class='form-control' placeholder='Group Title'></div><div class='col-md-3'><div class='form-check'><input class='form-check-input' type='checkbox' id='defaultCheck1'><label class='form-check-label' for='defaultCheck1'>Require</label></div></div><div class='col-md-3'><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio1' value='option1'><label class='form-check-label' for='inlineRadio1'>Multi Choice</label></div></div><div class='col-md-3'><div class='form-check form-check-inline'><input class='form-check-input' type='radio' name='inlineRadioOptions' id='inlineRadio2' value='option2'><label class='form-check-label' for='inlineRadio2'>Single Choice</label></div></div></div><div class='row mt-2 plus-item'><div class='col-md-3'><input class='form-control' ></div><div class='col-md-3'><input type='number' class='form-control' ></div><div class='col-md-3'><input class='form-control' placeholder='Additional Cooking Time'></div><div class='col-md-3'><div class='btn btn-danger delete-additional-item'>Remove</div></div></div><div class='additional-item2'></div><div class='row mt-2'><div class='col-md-3'><input class='form-control' ></div><div class='col-md-3'><input type='number' class='form-control' ></div><div class='col-md-3'><input class='form-control' placeholder='Additional Cooking Time'></div><div class='col-md-3  add-more-item2'><div class='btn btn-success'>Add</div></div></div></div></div>"
                 );
+            });
+            $(document).on('click', '.close-button', function() {
+                $(this).closest('.second-form').remove();
             });
             $(document).on('click', '.delete-additional-item', function() {
                 $(this).closest('.plus-item').remove();
@@ -246,7 +261,7 @@
                     $('#add-item-form').show();
                 } else {
                     $('#add-item-form').hide();
-                    $('.2nd-form').hide();
+                    $('.second-form').hide();
                 }
             });
 </script>

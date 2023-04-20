@@ -102,6 +102,15 @@ Route::get('order', function () {
 Route::get('order-detail', function () {
     return view('orders.show');
 })->name('order_detail');
+Route::get('restaurant-dashboard', function () {
+    return view('restaurant_dashboard.index');
+})->name('restaurant_dashboard');
+Route::get('reservation', function () {
+    return view('reservation.index');
+})->name('reservation');
+Route::get('reservation', function () {
+    return view('reservation.index');
+})->name('reservation');
 
 Route::get('file-export', [RestaurantGroupComponent::class, 'export'])->name('file_export');
 

@@ -9,8 +9,9 @@
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         </div>
-        <div class="col-md-3">
-
+        <div class="col-md-3 d-flex">
+            <input type="date" class="form-control" placeholder="From Date">
+            <input type="date" class="form-control" placeholder="To Date">
         </div>
         <div class="col-md-3">
 
@@ -61,7 +62,7 @@
                 </td>
                 <td>
                     <div>
-                        <a href="" class="btn btn-secondary">
+                        <a href="{{route('order_detail')}}" class="btn btn-secondary">
                             <i class="fas fa-eye text-white"></i>
                         </a>
                     </div>
@@ -85,7 +86,7 @@
                 </td>
                 <td>
                     <div>
-                        <a href="" class="btn btn-secondary">
+                        <a href="{{route('order_detail')}}" class="btn btn-secondary">
                             <i class="fas fa-eye text-white"></i>
                         </a>
                     </div>
@@ -109,7 +110,7 @@
                 </td>
                 <td>
                     <div>
-                        <a href="" class="btn btn-secondary">
+                        <a href="{{route('order_detail')}}" class="btn btn-secondary">
                             <i class="fas fa-eye text-white"></i>
                         </a>
                     </div>
